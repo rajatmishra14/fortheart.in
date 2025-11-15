@@ -29,7 +29,16 @@ Preferred communication style: Simple, everyday language.
 - UI components in `client/src/components/ui/` built with shadcn/ui and Radix UI primitives
 - Example components in `client/src/components/examples/` for development/testing
 
-**State Management**: TanStack Query (React Query) handles server state and data fetching with custom query functions defined in `lib/queryClient.ts`. Currently uses mock data with TODO markers indicating future backend integration.
+**State Management**: TanStack Query (React Query) handles server state and data fetching with custom query functions defined in `lib/queryClient.ts`. The Writing page connects to the backend API for post data with category filtering and sorting capabilities. Other sections (Drawings, Animations, Homepage) still use mock data with TODO markers indicating future backend integration.
+
+**Writing Page Features**: The AllWriting page (`client/src/pages/AllWriting.tsx`) implements a sophisticated filtering and sorting system:
+- **Sidebar Layout**: Two-column design with left sidebar for filters and main content area for post cards
+- **Sort Options**: Sort by Time (most recent first, default) or Popularity (by view count)
+- **Category Filters**: Filter posts by category (Creativity, Philosophy, Design, Drawing, Psychology, Media, Theology) or view all
+- **Post Cards**: Rich card-based display showing thumbnails, titles, dates, view counts, excerpts, and Read buttons
+- **URL Synchronization**: Filter and sort state syncs with URL parameters for shareable filtered views
+- **Error Handling**: Comprehensive error states with user-friendly messages and recovery options
+- **Type Safety**: End-to-end type safety from schema enums through API validation to frontend rendering
 
 **Styling**: Tailwind CSS with custom configuration for the minimalist design system:
 - Custom color scheme using HSL values with CSS variables for light/dark mode support
@@ -51,12 +60,14 @@ Preferred communication style: Simple, everyday language.
 **Development Server**: Custom Vite integration for hot module replacement during development. The Express server acts as middleware host for Vite in development mode, with separate build process for production.
 
 **Storage Layer**: Abstract storage interface defined in `server/storage.ts`:
-- `IStorage` interface provides CRUD method contracts
+- `IStorage` interface provides CRUD method contracts for users and posts
 - `MemStorage` implements in-memory storage for development
 - Designed for easy replacement with database-backed implementation
-- Currently includes User model with additional models (posts, drawings, animations) defined in schema but not yet implemented in routes
+- Seeded with 7 sample blog posts on initialization, each with category and thumbnail image
 
-**API Design**: RESTful API structure with routes prefixed with `/api`. Route registration happens in `server/routes.ts`. Currently minimal implementation with TODO markers for adding actual endpoints.
+**API Design**: RESTful API structure with routes prefixed with `/api`. Route registration happens in `server/routes.ts`. Implemented endpoints:
+- `GET /api/posts` - Fetch all posts with optional category filtering and sorting (validated with Zod)
+- `GET /api/posts/:id` - Fetch single post by ID
 
 **Request Logging**: Custom middleware logs API requests with duration tracking and response preview (truncated to 80 characters).
 
@@ -65,11 +76,13 @@ Preferred communication style: Simple, everyday language.
 **Database Schema**: Defined using Drizzle ORM with PostgreSQL dialect in `shared/schema.ts`:
 
 - **users**: User authentication data (id, username, password)
-- **posts**: Blog posts with title, content, date, and view count
+- **posts**: Blog posts with title, content, date, view count, category (pgEnum), and optional thumbnailUrl
+  - Categories: Creativity, Philosophy, Design, Drawing, Psychology, Media, Theology
+  - Posts can be filtered by category and sorted by time (date) or popularity (views)
 - **drawings**: Image gallery items with title, image URL, and date
 - **animations**: Video/animation entries with title, thumbnail URL, optional video URL, and date
 
-All tables use UUID primary keys generated via PostgreSQL's `gen_random_uuid()` function. Zod schemas provide runtime validation for insert operations.
+All tables use UUID primary keys generated via PostgreSQL's `gen_random_uuid()` function. Zod schemas provide runtime validation for insert operations and API request parameters.
 
 **Type Safety**: Full TypeScript type inference from Drizzle schema to frontend, with generated types exported from `shared/schema.ts`.
 
