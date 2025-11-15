@@ -21,11 +21,7 @@ export default function AllWriting() {
           <span>Back to home</span>
         </div>
       </Link>
-
-      <h1 className="text-3xl font-semibold mb-12" data-testid="heading-all-writing">
-        # Writing
-      </h1>
-
+      <h1 className="text-3xl font-semibold mb-12" data-testid="heading-all-writing">Writing</h1>
       <div className="space-y-8">
         {allPosts.map((post) => (
           <article key={post.id} className="border-b border-border pb-8 last:border-0">
