@@ -34,12 +34,6 @@ export default function AllDrawings() {
           <article key={drawing.id}>
             <Link href={`/drawings/${drawing.id}`} data-testid={`link-drawing-${drawing.id}`}>
               <div className="hover-elevate rounded-md overflow-hidden mb-3">
-                <img 
-                  src={drawing.imageUrl} 
-                  alt={drawing.title}
-                  className="w-full aspect-square object-cover"
-                  data-testid={`img-drawing-${drawing.id}`}
-                />
               </div>
               <h2 className="text-lg font-medium mb-1">{drawing.title}</h2>
             </Link>
