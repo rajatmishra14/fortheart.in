@@ -6,6 +6,8 @@ import animation1 from "@assets/generated_images/Geometric_transformation_frame_
 
 import _01_ThomasAquinas from "@assets/01_ThomasAquinas.gif";
 
+import island_1 from "@assets/island-1.gif";
+
 // Content block types for rich blog posts
 type ContentBlock = 
   | { type: 'text'; content: string }
@@ -163,7 +165,7 @@ export default function WritingPost() {
                 <figure key={index} className="my-8" data-testid={`figure-animation-${index}`}>
                   <div className="rounded-md overflow-hidden bg-muted">
                     <img 
-                      src={block.src} 
+                      src={island_1} 
                       alt={block.alt}
                       className="w-full"
                       data-testid={`animation-inline-${index}`}
