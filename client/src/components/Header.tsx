@@ -11,7 +11,7 @@ export default function Header() {
           </Link>
           <div className="flex items-center gap-3 pt-1">
             <a 
-              href="https://instagram.com/yourhandle" 
+              href="https://instagram.com/fortheart.in" 
               target="_blank" 
               rel="noopener noreferrer"
               className="hover-elevate px-2 py-1 rounded-md transition-opacity opacity-70 hover:opacity-100"
