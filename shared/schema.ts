@@ -41,6 +41,15 @@ export const animations = pgTable("animations", {
   date: text("date").notNull(),
 });
 
+export const comments = pgTable("comments", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  postId: varchar("post_id").notNull(),
+  author: text("author").notNull(),
+  email: text("email").notNull(),
+  text: text("text").notNull(),
+  date: text("date").notNull(),
+});
+
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
   password: true,
@@ -49,12 +58,15 @@ export const insertUserSchema = createInsertSchema(users).pick({
 export const insertPostSchema = createInsertSchema(posts).omit({ id: true });
 export const insertDrawingSchema = createInsertSchema(drawings).omit({ id: true });
 export const insertAnimationSchema = createInsertSchema(animations).omit({ id: true });
+export const insertCommentSchema = createInsertSchema(comments).omit({ id: true });
 
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 export type Post = typeof posts.$inferSelect;
 export type Drawing = typeof drawings.$inferSelect;
 export type Animation = typeof animations.$inferSelect;
+export type Comment = typeof comments.$inferSelect;
 export type InsertPost = z.infer<typeof insertPostSchema>;
 export type InsertDrawing = z.infer<typeof insertDrawingSchema>;
 export type InsertAnimation = z.infer<typeof insertAnimationSchema>;
+export type InsertComment = z.infer<typeof insertCommentSchema>;

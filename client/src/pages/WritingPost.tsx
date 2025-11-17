@@ -1,5 +1,11 @@
 import { useRoute, Link } from "wouter";
 import { ArrowLeft } from "lucide-react";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { queryClient, apiRequest } from "@/lib/queryClient";
+import { type Comment } from "@shared/schema";
+import { useToast } from "@/hooks/use-toast";
+import CommentForm from "@/components/CommentForm";
+import CommentsDisplay from "@/components/CommentsDisplay";
 import drawing1 from "@assets/generated_images/Abstract_geometric_line_drawing_51a0a65f.png";
 import drawing2 from "@assets/generated_images/Organic_curves_visual_study_86bcec83.png";
 import animation1 from "@assets/generated_images/Geometric_transformation_frame_8f83c90a.png";
@@ -28,7 +34,7 @@ const posts: Record<string, {
     content: [
       {
         type: 'text',
-        content: 'Visual thinking is not just about creating beautiful images—it\'s about understanding and communicating complex ideas through visual means. When we draw, we are forced to think deeply about what we\'re trying to express.'
+        content: 'Visual thinking is not about creating beautiful images—it\'s about understanding and communicating complex ideas through visual means. When we draw, we are forced to think deeply about what we\'re trying to express.'
       },
       {
         type: 'image',
@@ -110,6 +116,38 @@ export default function WritingPost() {
   const [, params] = useRoute("/writing/:id");
   const postId = params?.id || "1";
   const post = posts[postId] || posts["1"];
+  const { toast } = useToast();
+
+  // Fetch comments for this post
+  const { data: comments = [], isLoading: commentsLoading } = useQuery<Comment[]>({
+    queryKey: ["/api/posts", postId, "comments"],
+  });
+
+  // Mutation to create a new comment
+  const createCommentMutation = useMutation({
+    mutationFn: async (values: { text: string; author: string; email: string }) => {
+      const response = await apiRequest("POST", `/api/posts/${postId}/comments`, values);
+      return await response.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/posts", postId, "comments"] });
+      toast({
+        title: "Comment posted",
+        description: "Your comment has been successfully submitted.",
+      });
+    },
+    onError: () => {
+      toast({
+        title: "Error",
+        description: "Failed to post comment. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
+
+  const handleCommentSubmit = async (values: { text: string; author: string; email: string }) => {
+    await createCommentMutation.mutateAsync(values);
+  };
 
   return (
     <div className="max-w-prose mx-auto px-6 py-12">
@@ -184,6 +222,21 @@ export default function WritingPost() {
           })}
         </div>
       </article>
+
+      {/* Comments Section */}
+      <section className="mt-16 pt-16 border-t border-border" data-testid="section-comments">
+        {commentsLoading ? (
+          <p className="text-sm opacity-60" data-testid="text-loading-comments">Loading comments...</p>
+        ) : (
+          <CommentsDisplay comments={comments} />
+        )}
+
+        <CommentForm 
+          postId={postId}
+          onSubmit={handleCommentSubmit}
+          isSubmitting={createCommentMutation.isPending}
+        />
+      </section>
     </div>
   );
 }

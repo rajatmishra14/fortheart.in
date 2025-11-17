@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { type Category } from "@shared/schema";
+import { type Category, insertCommentSchema } from "@shared/schema";
 import { z } from "zod";
 
 // Zod schemas for validation
@@ -51,6 +51,40 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(post);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch post" });
+    }
+  });
+
+  // Get all comments for a post
+  app.get("/api/posts/:postId/comments", async (req, res) => {
+    try {
+      const comments = await storage.getCommentsByPostId(req.params.postId);
+      res.json(comments);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch comments" });
+    }
+  });
+
+  // Create a new comment
+  app.post("/api/posts/:postId/comments", async (req, res) => {
+    try {
+      // Validate request body
+      const validation = insertCommentSchema.safeParse({
+        ...req.body,
+        postId: req.params.postId,
+        date: new Date().toISOString().split('T')[0] // Add current date
+      });
+      
+      if (!validation.success) {
+        return res.status(400).json({ 
+          error: "Invalid comment data",
+          details: validation.error.errors 
+        });
+      }
+      
+      const comment = await storage.createComment(validation.data);
+      res.status(201).json(comment);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to create comment" });
     }
   });
 

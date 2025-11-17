@@ -1,4 +1,4 @@
-import { type User, type InsertUser, type Post, type InsertPost, type Category } from "@shared/schema";
+import { type User, type InsertUser, type Post, type InsertPost, type Comment, type InsertComment, type Category } from "@shared/schema";
 import { randomUUID } from "crypto";
 
 // modify the interface with any CRUD methods
@@ -11,15 +11,19 @@ export interface IStorage {
   getPosts(options?: { category?: Category; sortBy?: "time" | "popularity" }): Promise<Post[]>;
   getPost(id: string): Promise<Post | undefined>;
   createPost(post: InsertPost): Promise<Post>;
+  getCommentsByPostId(postId: string): Promise<Comment[]>;
+  createComment(comment: InsertComment): Promise<Comment>;
 }
 
 export class MemStorage implements IStorage {
   private users: Map<string, User>;
   private posts: Map<string, Post>;
+  private comments: Map<string, Comment>;
 
   constructor() {
     this.users = new Map();
     this.posts = new Map();
+    this.comments = new Map();
   }
 
   async getUser(id: string): Promise<User | undefined> {
@@ -72,6 +76,20 @@ export class MemStorage implements IStorage {
     };
     this.posts.set(id, post);
     return post;
+  }
+
+  async getCommentsByPostId(postId: string): Promise<Comment[]> {
+    const comments = Array.from(this.comments.values())
+      .filter(comment => comment.postId === postId)
+      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    return comments;
+  }
+
+  async createComment(insertComment: InsertComment): Promise<Comment> {
+    const id = randomUUID();
+    const comment: Comment = { ...insertComment, id };
+    this.comments.set(id, comment);
+    return comment;
   }
 }
 
