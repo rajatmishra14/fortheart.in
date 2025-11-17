@@ -4,6 +4,8 @@ import drawing1 from "@assets/generated_images/Abstract_geometric_line_drawing_5
 import drawing2 from "@assets/generated_images/Organic_curves_visual_study_86bcec83.png";
 import animation1 from "@assets/generated_images/Geometric_transformation_frame_8f83c90a.png";
 
+import _01_ThomasAquinas from "@assets/01_ThomasAquinas.gif";
+
 // Content block types for rich blog posts
 type ContentBlock = 
   | { type: 'text'; content: string }
@@ -115,7 +117,6 @@ export default function WritingPost() {
           <span>Back to writing</span>
         </div>
       </Link>
-
       <article>
         <h1 className="text-3xl font-semibold mb-4" data-testid="heading-post-title">
           {post.title}
@@ -142,7 +143,7 @@ export default function WritingPost() {
                 <figure key={index} className="my-8" data-testid={`figure-image-${index}`}>
                   <div className="rounded-md overflow-hidden">
                     <img 
-                      src={block.src} 
+                      src={_01_ThomasAquinas} 
                       alt={block.alt}
                       className="w-full"
                       data-testid={`img-inline-${index}`}
