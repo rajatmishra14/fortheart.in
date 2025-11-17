@@ -25,13 +25,11 @@ Preferred communication style: Simple, everyday language.
 
 **Component Structure**: The application follows a component-based architecture with clear separation:
 - Layout components (Navigation, Header, Footer) provide consistent page structure
-  - Navigation includes Home link with active state highlighting
-  - Header displays Instagram and YouTube social media icons with proper ARIA attributes
 - Page components in `client/src/pages/` handle routing and content display
 - UI components in `client/src/components/ui/` built with shadcn/ui and Radix UI primitives
-- Feature components include CommentForm and CommentsDisplay for interactive blog comments
+- Example components in `client/src/components/examples/` for development/testing
 
-**State Management**: TanStack Query (React Query) handles server state and data fetching with custom query functions defined in `lib/queryClient.ts`. The Writing page and WritingPost detail page connect to the backend API for post data with category filtering, sorting, and individual post fetching. The WritingPost page also fetches and displays comments with real-time updates. Other sections (Drawings, Animations, Homepage) still use mock data with TODO markers indicating future backend integration.
+**State Management**: TanStack Query (React Query) handles server state and data fetching with custom query functions defined in `lib/queryClient.ts`. The Writing page connects to the backend API for post data with category filtering and sorting capabilities. Other sections (Drawings, Animations, Homepage) still use mock data with TODO markers indicating future backend integration.
 
 **Writing Page Features**: The AllWriting page (`client/src/pages/AllWriting.tsx`) implements a sophisticated filtering and sorting system:
 - **Sidebar Layout**: Two-column design with left sidebar for filters and main content area for post cards
@@ -62,17 +60,14 @@ Preferred communication style: Simple, everyday language.
 **Development Server**: Custom Vite integration for hot module replacement during development. The Express server acts as middleware host for Vite in development mode, with separate build process for production.
 
 **Storage Layer**: Abstract storage interface defined in `server/storage.ts`:
-- `IStorage` interface provides CRUD method contracts for users, posts, and comments
+- `IStorage` interface provides CRUD method contracts for users and posts
 - `MemStorage` implements in-memory storage for development
 - Designed for easy replacement with database-backed implementation
 - Seeded with 7 sample blog posts on initialization, each with category and thumbnail image
-- Comment storage methods: `getCommentsByPostId` (sorted by date, newest first) and `createComment`
 
 **API Design**: RESTful API structure with routes prefixed with `/api`. Route registration happens in `server/routes.ts`. Implemented endpoints:
 - `GET /api/posts` - Fetch all posts with optional category filtering and sorting (validated with Zod)
 - `GET /api/posts/:id` - Fetch single post by ID
-- `GET /api/posts/:postId/comments` - Fetch all comments for a specific post (sorted by date, newest first)
-- `POST /api/posts/:postId/comments` - Create a new comment (validates author, email, text with Zod)
 
 **Request Logging**: Custom middleware logs API requests with duration tracking and response preview (truncated to 80 characters).
 
@@ -84,9 +79,6 @@ Preferred communication style: Simple, everyday language.
 - **posts**: Blog posts with title, content, date, view count, category (pgEnum), and optional thumbnailUrl
   - Categories: Creativity, Philosophy, Design, Drawing, Psychology, Media, Theology
   - Posts can be filtered by category and sorted by time (date) or popularity (views)
-- **comments**: Blog post comments with postId (foreign key to posts), author, email, text, and date
-  - Comments are displayed on individual post pages in chronological order (newest first)
-  - Form validation ensures all fields are properly filled before submission
 - **drawings**: Image gallery items with title, image URL, and date
 - **animations**: Video/animation entries with title, thumbnail URL, optional video URL, and date
 
