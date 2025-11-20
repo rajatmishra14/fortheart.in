@@ -14,6 +14,7 @@ import WritingPost from "@/pages/WritingPost";
 import DrawingDetail from "@/pages/DrawingDetail";
 import AnimationDetail from "@/pages/AnimationDetail";
 import Contact from "@/pages/Contact";
+import About from "@/pages/About";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -26,6 +27,7 @@ function Router() {
       <Route path="/drawings/:id" component={DrawingDetail} />
       <Route path="/animations" component={AllAnimations} />
       <Route path="/animations/:id" component={AnimationDetail} />
+      <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
       <Route component={NotFound} />
     </Switch>

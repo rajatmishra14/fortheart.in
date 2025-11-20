@@ -10,9 +10,9 @@ export default function Header() {
             <h1 className="text-2xl font-semibold hover-elevate inline-block px-2 py-1 rounded-md transition-opacity">For the art</h1>
           </Link>
           <div className="flex items-center gap-3 pt-1">
-            <a 
-              href="https://instagram.com/fortheart.in" 
-              target="_blank" 
+            <a
+              href="https://instagram.com/fortheart.in"
+              target="_blank"
               rel="noopener noreferrer"
               className="hover-elevate px-2 py-1 rounded-md transition-opacity opacity-70 hover:opacity-100"
               data-testid="link-instagram"
@@ -20,9 +20,9 @@ export default function Header() {
             >
               <Instagram className="w-5 h-5" />
             </a>
-            <a 
-              href="https://youtube.com/@yourchannel" 
-              target="_blank" 
+            <a
+              href="https://youtube.com/@letterstorajat"
+              target="_blank"
               rel="noopener noreferrer"
               className="hover-elevate px-2 py-1 rounded-md transition-opacity opacity-70 hover:opacity-100"
               data-testid="link-youtube"
@@ -33,7 +33,7 @@ export default function Header() {
           </div>
         </div>
         <p className="text-base opacity-70 italic leading-relaxed" data-testid="text-tagline">
-          Clarity & Beauty – Join the conversation on drawing, creativity and visual understanding, 
+          Clarity & Beauty – Join the conversation on drawing, creativity and visual understanding,
           and have a look at my pictures of this great spectacle called life!
         </p>
       </div>
