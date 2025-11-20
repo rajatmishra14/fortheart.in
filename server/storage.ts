@@ -45,12 +45,12 @@ export class MemStorage implements IStorage {
 
   async getPosts(options?: { category?: Category; sortBy?: "time" | "popularity" }): Promise<Post[]> {
     let posts = Array.from(this.posts.values());
-    
+
     // Filter by category if specified
     if (options?.category) {
       posts = posts.filter(post => post.category === options.category);
     }
-    
+
     // Sort based on criteria
     if (options?.sortBy === "popularity") {
       posts.sort((a, b) => b.views - a.views);
@@ -58,7 +58,7 @@ export class MemStorage implements IStorage {
       // Default sort by time (most recent first)
       posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     }
-    
+
     return posts;
   }
 
@@ -68,8 +68,8 @@ export class MemStorage implements IStorage {
 
   async createPost(insertPost: InsertPost): Promise<Post> {
     const id = randomUUID();
-    const post: Post = { 
-      ...insertPost, 
+    const post: Post = {
+      ...insertPost,
       id,
       views: insertPost.views ?? 0,
       thumbnailUrl: insertPost.thumbnailUrl ?? null
@@ -102,7 +102,7 @@ async function seedData() {
     title: "On Visual Thinking and Clarity",
     content: "The power of visual thinking lies in its ability to make complex ideas immediately graspable.",
     date: "2025-01-12",
-    views: 2341,
+    views: 0,
     category: "Creativity",
     thumbnailUrl: "/@fs/home/runner/workspace/attached_assets/generated_images/Abstract_geometric_line_drawing_51a0a65f.png"
   });
@@ -111,7 +111,7 @@ async function seedData() {
     title: "The Art of Simplification",
     content: "Simplification is not about removing detail—it's about finding the essential truth of a thing and expressing it with economy.",
     date: "2025-01-05",
-    views: 1543,
+    views: 0,
     category: "Design",
     thumbnailUrl: "/@fs/home/runner/workspace/attached_assets/generated_images/Geometric_transformation_frame_8f83c90a.png"
   });
@@ -120,7 +120,7 @@ async function seedData() {
     title: "Drawing as Understanding",
     content: "To draw something is to truly see it. Not just to look at it, but to understand its structure, its form, its essence.",
     date: "2024-12-28",
-    views: 987,
+    views: 0,
     category: "Drawing",
     thumbnailUrl: "/@fs/home/runner/workspace/attached_assets/generated_images/Organic_curves_visual_study_86bcec83.png"
   });
@@ -129,7 +129,7 @@ async function seedData() {
     title: "The Philosophy of Minimalism",
     content: "Minimalism isn't about having less—it's about making room for more of what matters.",
     date: "2024-12-20",
-    views: 3210,
+    views: 0,
     category: "Philosophy",
     thumbnailUrl: "/@fs/home/runner/workspace/attached_assets/generated_images/Perspective_lines_geometric_art_668711b7.png"
   });
@@ -138,17 +138,17 @@ async function seedData() {
     title: "Psychology of Visual Perception",
     content: "How we see is shaped by what we expect to see. Our visual system is prediction-driven.",
     date: "2024-12-15",
-    views: 1876,
+    views: 0,
     category: "Psychology",
     thumbnailUrl: "/@fs/home/runner/workspace/attached_assets/generated_images/Light_shadow_abstract_shapes_4ce07207.png"
   });
 
   await storage.createPost({
-    title: "Digital Media in Modern Art",
-    content: "The tools change, but the principles remain. Digital media is just another brush.",
+    title: "Digital Tools in Modern Art",
+    content: "The tools change, but the principles remain. Digital tools are simply modern brushes for timeless creative expression.",
     date: "2024-12-10",
-    views: 1432,
-    category: "Media",
+    views: 0,
+    category: "Design",
     thumbnailUrl: "/@fs/home/runner/workspace/attached_assets/generated_images/Flowing_lines_motion_study_09ed811f.png"
   });
 
@@ -156,7 +156,7 @@ async function seedData() {
     title: "Sacred Geometry and Meaning",
     content: "Throughout history, certain geometric forms have been seen as vessels of deeper meaning.",
     date: "2024-12-05",
-    views: 2145,
+    views: 0,
     category: "Theology",
     thumbnailUrl: "/@fs/home/runner/workspace/attached_assets/generated_images/Abstract_geometric_line_drawing_51a0a65f.png"
   });
