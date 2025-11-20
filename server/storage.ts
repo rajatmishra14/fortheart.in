@@ -104,7 +104,7 @@ async function seedData() {
     date: "2025-01-12",
     views: 0,
     category: "Creativity",
-    thumbnailUrl: "/@fs/home/runner/workspace/attached_assets/generated_images/Abstract_geometric_line_drawing_51a0a65f.png"
+    thumbnailUrl: "/attached_assets/generated_images/Abstract_geometric_line_drawing_51a0a65f.png"
   });
 
   await storage.createPost({
@@ -113,7 +113,7 @@ async function seedData() {
     date: "2025-01-05",
     views: 0,
     category: "Design",
-    thumbnailUrl: "/@fs/home/runner/workspace/attached_assets/generated_images/Geometric_transformation_frame_8f83c90a.png"
+    thumbnailUrl: "/attached_assets/generated_images/Geometric_transformation_frame_8f83c90a.png"
   });
 
   await storage.createPost({
@@ -122,7 +122,7 @@ async function seedData() {
     date: "2024-12-28",
     views: 0,
     category: "Drawing",
-    thumbnailUrl: "/@fs/home/runner/workspace/attached_assets/generated_images/Organic_curves_visual_study_86bcec83.png"
+    thumbnailUrl: "/attached_assets/generated_images/Organic_curves_visual_study_86bcec83.png"
   });
 
   await storage.createPost({
@@ -131,7 +131,7 @@ async function seedData() {
     date: "2024-12-20",
     views: 0,
     category: "Philosophy",
-    thumbnailUrl: "/@fs/home/runner/workspace/attached_assets/generated_images/Perspective_lines_geometric_art_668711b7.png"
+    thumbnailUrl: "/attached_assets/generated_images/Perspective_lines_geometric_art_668711b7.png"
   });
 
   await storage.createPost({
@@ -140,7 +140,7 @@ async function seedData() {
     date: "2024-12-15",
     views: 0,
     category: "Psychology",
-    thumbnailUrl: "/@fs/home/runner/workspace/attached_assets/generated_images/Light_shadow_abstract_shapes_4ce07207.png"
+    thumbnailUrl: "/attached_assets/generated_images/Light_shadow_abstract_shapes_4ce07207.png"
   });
 
   await storage.createPost({
@@ -149,7 +149,7 @@ async function seedData() {
     date: "2024-12-10",
     views: 0,
     category: "Design",
-    thumbnailUrl: "/@fs/home/runner/workspace/attached_assets/generated_images/Flowing_lines_motion_study_09ed811f.png"
+    thumbnailUrl: "/attached_assets/generated_images/Flowing_lines_motion_study_09ed811f.png"
   });
 
   await storage.createPost({
@@ -158,7 +158,7 @@ async function seedData() {
     date: "2024-12-05",
     views: 0,
     category: "Theology",
-    thumbnailUrl: "/@fs/home/runner/workspace/attached_assets/generated_images/Abstract_geometric_line_drawing_51a0a65f.png"
+    thumbnailUrl: "/attached_assets/generated_images/Abstract_geometric_line_drawing_51a0a65f.png"
   });
 }
 
