@@ -57,9 +57,7 @@ export default function HomePage() {
 
         {/* Drawings Section */}
         <section>
-          <h2 className="text-xl font-semibold mb-6" data-testid="heading-drawings">
-            Metaphysics
-          </h2>
+          <h2 className="text-xl font-semibold mb-6" data-testid="heading-drawings">Aesthetics</h2>
           <div className="space-y-6">
             {recentDrawings.map((drawing) => (
               <article key={drawing.id}>
