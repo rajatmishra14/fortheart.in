@@ -98,12 +98,9 @@ export default function AllWriting() {
           </div>
         </div>
       </aside>
-
       {/* Main Content */}
       <main className="flex-1 px-12 py-12">
-        <h1 className="text-3xl font-semibold mb-12" data-testid="heading-writing">
-          Writing
-        </h1>
+        <h1 className="text-3xl font-semibold mb-12" data-testid="heading-writing">Ethics</h1>
 
         {isLoading ? (
           <div className="text-center py-12 opacity-60" data-testid="text-loading">Loading...</div>
