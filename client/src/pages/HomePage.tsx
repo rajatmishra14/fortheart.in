@@ -1,30 +1,23 @@
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
-import drawing1 from "@assets/generated_images/Abstract_geometric_line_drawing_51a0a65f.png";
-import drawing2 from "@assets/generated_images/Organic_curves_visual_study_86bcec83.png";
-import drawing3 from "@assets/generated_images/Perspective_lines_geometric_art_668711b7.png";
-import animation1 from "@assets/generated_images/Geometric_transformation_frame_8f83c90a.png";
-import animation2 from "@assets/generated_images/Flowing_lines_motion_study_09ed811f.png";
-
-// TODO: remove mock data
-const recentPosts = [
-  { id: "1", title: "On Visual Thinking and Clarity", date: "2025-01-10", views: 2819 },
-  { id: "2", title: "The Art of Simplification", date: "2025-01-05", views: 1543 },
-  { id: "3", title: "Drawing as Understanding", date: "2024-12-28", views: 987 },
-];
-
-const recentDrawings = [
-  { id: "1", title: "Abstract Forms", imageUrl: drawing1, date: "2025-01-08" },
-  { id: "2", title: "Visual Rhythm", imageUrl: drawing2, date: "2025-01-03" },
-  { id: "3", title: "Perspective Study", imageUrl: drawing3, date: "2024-12-30" },
-];
-
-const recentAnimations = [
-  { id: "1", title: "Transformation", thumbnailUrl: animation1, date: "2025-01-06" },
-  { id: "2", title: "Flow and Motion", thumbnailUrl: animation2, date: "2024-12-29" },
-];
+import { useQuery } from "@tanstack/react-query";
+import { type Post } from "@shared/schema";
 
 export default function HomePage() {
+  // Fetch all posts
+  const { data: posts = [], isLoading } = useQuery<Post[]>({
+    queryKey: ['/api/posts'],
+  });
+
+  // Filter posts by category
+  const ethicsPosts = posts.filter(p => p.category === "Ethics").slice(0, 3);
+  const aestheticsPosts = posts.filter(p => p.category === "Aesthetics").slice(0, 3);
+  const metaphysicsPosts = posts.filter(p => p.category === "Metaphysics").slice(0, 3);
+
+  if (isLoading) {
+    return <div className="max-w-6xl mx-auto px-6 py-12 text-center opacity-60">Loading...</div>;
+  }
+
   return (
     <div className="max-w-6xl mx-auto px-6 py-12">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
@@ -34,7 +27,7 @@ export default function HomePage() {
             # Ethics
           </h2>
           <div className="space-y-6">
-            {recentPosts.map((post) => (
+            {ethicsPosts.map((post) => (
               <article key={post.id}>
                 <Link href={`/writing/${post.id}`} data-testid={`link-post-${post.id}`}>
                   <h3 className="text-lg font-medium hover-elevate inline-block px-1 py-0.5 rounded-md transition-opacity mb-1">
@@ -63,21 +56,23 @@ export default function HomePage() {
             # Aesthetics
           </h2>
           <div className="space-y-6">
-            {recentDrawings.map((drawing) => (
-              <article key={drawing.id}>
-                <Link href={`/writing/${drawing.id}`} data-testid={`link-drawing-${drawing.id}`}>
+            {aestheticsPosts.map((post) => (
+              <article key={post.id}>
+                <Link href={`/writing/${post.id}`} data-testid={`link-drawing-${post.id}`}>
                   <div className="hover-elevate rounded-md overflow-hidden mb-2">
-                    <img
-                      src={drawing.imageUrl}
-                      alt={drawing.title}
-                      className="w-full aspect-square object-cover"
-                      data-testid={`img-drawing-${drawing.id}`}
-                    />
+                    {post.thumbnailUrl && (
+                      <img
+                        src={post.thumbnailUrl}
+                        alt={post.title}
+                        className="w-full aspect-square object-cover"
+                        data-testid={`img-drawing-${post.id}`}
+                      />
+                    )}
                   </div>
-                  <h3 className="text-lg font-medium mb-1">{drawing.title}</h3>
+                  <h3 className="text-lg font-medium mb-1">{post.title}</h3>
                 </Link>
-                <div className="text-sm opacity-60" data-testid={`date-drawing-${drawing.id}`}>
-                  {drawing.date}
+                <div className="text-sm opacity-60" data-testid={`date-drawing-${post.id}`}>
+                  {post.date}
                 </div>
               </article>
             ))}
@@ -96,21 +91,23 @@ export default function HomePage() {
             # Metaphysics
           </h2>
           <div className="space-y-6">
-            {recentAnimations.map((animation) => (
-              <article key={animation.id}>
-                <Link href={`/writing/${animation.id}`} data-testid={`link-animation-${animation.id}`}>
+            {metaphysicsPosts.map((post) => (
+              <article key={post.id}>
+                <Link href={`/writing/${post.id}`} data-testid={`link-animation-${post.id}`}>
                   <div className="hover-elevate rounded-md overflow-hidden mb-2">
-                    <img
-                      src={animation.thumbnailUrl}
-                      alt={animation.title}
-                      className="w-full aspect-video object-cover"
-                      data-testid={`img-animation-${animation.id}`}
-                    />
+                    {post.thumbnailUrl && (
+                      <img
+                        src={post.thumbnailUrl}
+                        alt={post.title}
+                        className="w-full aspect-video object-cover"
+                        data-testid={`img-animation-${post.id}`}
+                      />
+                    )}
                   </div>
-                  <h3 className="text-lg font-medium mb-1">{animation.title}</h3>
+                  <h3 className="text-lg font-medium mb-1">{post.title}</h3>
                 </Link>
-                <div className="text-sm opacity-60" data-testid={`date-animation-${animation.id}`}>
-                  {animation.date}
+                <div className="text-sm opacity-60" data-testid={`date-animation-${post.id}`}>
+                  {post.date}
                 </div>
               </article>
             ))}
