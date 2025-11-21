@@ -11,9 +11,7 @@ export default function Navigation() {
         <div className="flex items-center gap-3 text-sm font-medium">
           <Link href="/" data-testid="link-nav-home">
             <span className={`hover-elevate transition-opacity px-2 py-1 rounded-md ${isActive("/") ? "opacity-100" : "opacity-70"
-              }`}>
-              Home
-            </span>
+              }`}>For the art</span>
           </Link>
           <span className="opacity-30">|</span>
           <Link href="/writing" data-testid="link-writing">
