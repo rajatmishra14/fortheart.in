@@ -58,7 +58,7 @@ export default function HomePage() {
         {/* Drawings Section */}
         <section>
           <h2 className="text-xl font-semibold mb-6" data-testid="heading-drawings">
-            # Drawings
+            Metaphysics
           </h2>
           <div className="space-y-6">
             {recentDrawings.map((drawing) => (
@@ -90,9 +90,7 @@ export default function HomePage() {
 
         {/* Animations Section */}
         <section>
-          <h2 className="text-xl font-semibold mb-6" data-testid="heading-animations">
-            # Animations
-          </h2>
+          <h2 className="text-xl font-semibold mb-6" data-testid="heading-animations">Metaphysics</h2>
           <div className="space-y-6">
             {recentAnimations.map((animation) => (
               <article key={animation.id}>
