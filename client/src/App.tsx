@@ -1,4 +1,4 @@
-import { Switch, Route, Redirect } from "wouter";
+import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -8,31 +8,27 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HomePage from "@/pages/HomePage";
 import AllWriting from "@/pages/AllWriting";
+import AllDrawings from "@/pages/AllDrawings";
+import AllAnimations from "@/pages/AllAnimations";
 import WritingPost from "@/pages/WritingPost";
-import Community from "@/pages/Community";
+import DrawingDetail from "@/pages/DrawingDetail";
+import AnimationDetail from "@/pages/AnimationDetail";
+import Contact from "@/pages/Contact";
+import About from "@/pages/About";
 import NotFound from "@/pages/not-found";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={HomePage} />
-      <Route path="/ethics">
-        <AllWriting category="Ethics" />
-      </Route>
-      <Route path="/aesthetics">
-        <AllWriting category="Aesthetics" />
-      </Route>
-      <Route path="/metaphysics">
-        <AllWriting category="Metaphysics" />
-      </Route>
+      <Route path="/writing" component={AllWriting} />
       <Route path="/writing/:id" component={WritingPost} />
-      <Route path="/community" component={Community} />
-
-      {/* Redirects for old routes */}
-      <Route path="/writing"><Redirect to="/ethics" /></Route>
-      <Route path="/drawings"><Redirect to="/aesthetics" /></Route>
-      <Route path="/animations"><Redirect to="/metaphysics" /></Route>
-
+      <Route path="/drawings" component={AllDrawings} />
+      <Route path="/drawings/:id" component={DrawingDetail} />
+      <Route path="/animations" component={AllAnimations} />
+      <Route path="/animations/:id" component={AnimationDetail} />
+      <Route path="/about" component={About} />
+      <Route path="/contact" component={Contact} />
       <Route component={NotFound} />
     </Switch>
   );

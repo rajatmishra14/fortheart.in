@@ -3,12 +3,12 @@ import { pgTable, text, varchar, integer, timestamp, pgEnum } from "drizzle-orm/
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-export const categoryEnum = pgEnum("category", ["Ethics", "Aesthetics", "Metaphysics"]);
+export const categoryEnum = pgEnum("category", ["Creativity", "Philosophy", "Design", "Drawing", "Psychology", "Theology"]);
 
 // UI categories include "All categories" for filtering
-export const uiCategories = ["All categories", "Ethics", "Aesthetics", "Metaphysics"] as const;
+export const uiCategories = ["All categories", "Creativity", "Philosophy", "Design", "Drawing", "Psychology", "Theology"] as const;
 export type UICategory = typeof uiCategories[number];
-export type Category = "Ethics" | "Aesthetics" | "Metaphysics";
+export type Category = "Creativity" | "Philosophy" | "Design" | "Drawing" | "Psychology" | "Theology";
 
 export const users = pgTable("users", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),

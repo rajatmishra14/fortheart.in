@@ -1,6 +1,5 @@
 import { Link } from "wouter";
 import { Instagram, Youtube } from "lucide-react";
-import { SiReddit, SiDiscord } from "./social-icons";
 
 export default function Header() {
   return (
@@ -30,26 +29,6 @@ export default function Header() {
               aria-label="YouTube"
             >
               <Youtube className="w-5 h-5" />
-            </a>
-            <a
-              href="https://reddit.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover-elevate px-2 py-1 rounded-md transition-opacity opacity-70 hover:opacity-100"
-              data-testid="link-reddit"
-              aria-label="Reddit"
-            >
-              <SiReddit className="w-5 h-5" />
-            </a>
-            <a
-              href="https://discord.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover-elevate px-2 py-1 rounded-md transition-opacity opacity-70 hover:opacity-100"
-              data-testid="link-discord"
-              aria-label="Discord"
-            >
-              <SiDiscord className="w-5 h-5" />
             </a>
           </div>
         </div>
