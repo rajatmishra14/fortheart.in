@@ -6,7 +6,6 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} letterstorajat
         </p>
         <div className="flex gap-6 text-sm opacity-60">
-          <a href="/contact" className="hover:opacity-100 transition-opacity">Contact</a>
           <a href="/about" className="hover:opacity-100 transition-opacity">About</a>
         </div>
       </div>
