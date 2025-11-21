@@ -13,7 +13,7 @@ import AllAnimations from "@/pages/AllAnimations";
 import WritingPost from "@/pages/WritingPost";
 import DrawingDetail from "@/pages/DrawingDetail";
 import AnimationDetail from "@/pages/AnimationDetail";
-import Contact from "@/pages/Contact";
+import Community from "@/pages/Community";
 import About from "@/pages/About";
 import NotFound from "@/pages/not-found";
 
@@ -28,7 +28,7 @@ function Router() {
       <Route path="/animations" component={AllAnimations} />
       <Route path="/animations/:id" component={AnimationDetail} />
       <Route path="/about" component={About} />
-      <Route path="/contact" component={Contact} />
+      <Route path="/community" component={Community} />
       <Route component={NotFound} />
     </Switch>
   );

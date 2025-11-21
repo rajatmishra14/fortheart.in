@@ -44,10 +44,10 @@ export default function Navigation() {
             </span>
           </Link>
           <span className="opacity-30">|</span>
-          <Link href="/contact" data-testid="link-contact">
-            <span className={`hover-elevate transition-opacity px-2 py-1 rounded-md ${isActive("/contact") ? "opacity-100" : "opacity-70"
+          <Link href="/community" data-testid="link-community">
+            <span className={`hover-elevate transition-opacity px-2 py-1 rounded-md ${isActive("/community") ? "opacity-100" : "opacity-70"
               }`}>
-              Contact
+              Join our community
             </span>
           </Link>
         </div>
