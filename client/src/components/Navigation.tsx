@@ -24,7 +24,7 @@ export default function Navigation() {
           <Link href="/drawings" data-testid="link-drawings">
             <span className={`hover-elevate transition-opacity px-2 py-1 rounded-md ${isActive("/drawings") ? "opacity-100" : "opacity-70"
               }`}>
-              Drawings
+              Aesthetics
             </span>
           </Link>
           <span className="opacity-30">|</span>
