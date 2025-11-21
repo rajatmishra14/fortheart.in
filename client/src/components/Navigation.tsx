@@ -12,35 +12,28 @@ export default function Navigation() {
           <Link href="/" data-testid="link-nav-home">
             <span className={`hover-elevate transition-opacity px-2 py-1 rounded-md ${isActive("/") ? "opacity-100" : "opacity-70"
               }`}>
-              Home
+              For the art
             </span>
           </Link>
           <span className="opacity-30">|</span>
-          <Link href="/writing" data-testid="link-writing">
-            <span className={`hover-elevate transition-opacity px-2 py-1 rounded-md ${isActive("/writing") ? "opacity-100" : "opacity-70"
+          <Link href="/ethics" data-testid="link-ethics">
+            <span className={`hover-elevate transition-opacity px-2 py-1 rounded-md ${isActive("/ethics") ? "opacity-100" : "opacity-70"
               }`}>
-              Writing
+              Ethics
             </span>
           </Link>
           <span className="opacity-30">|</span>
-          <Link href="/drawings" data-testid="link-drawings">
-            <span className={`hover-elevate transition-opacity px-2 py-1 rounded-md ${isActive("/drawings") ? "opacity-100" : "opacity-70"
+          <Link href="/aesthetics" data-testid="link-aesthetics">
+            <span className={`hover-elevate transition-opacity px-2 py-1 rounded-md ${isActive("/aesthetics") ? "opacity-100" : "opacity-70"
               }`}>
-              Drawings
+              Aesthetics
             </span>
           </Link>
           <span className="opacity-30">|</span>
-          <Link href="/animations" data-testid="link-animations">
-            <span className={`hover-elevate transition-opacity px-2 py-1 rounded-md ${isActive("/animations") ? "opacity-100" : "opacity-70"
+          <Link href="/metaphysics" data-testid="link-metaphysics">
+            <span className={`hover-elevate transition-opacity px-2 py-1 rounded-md ${isActive("/metaphysics") ? "opacity-100" : "opacity-70"
               }`}>
-              Animations
-            </span>
-          </Link>
-          <span className="opacity-30">|</span>
-          <Link href="/about" data-testid="link-about">
-            <span className={`hover-elevate transition-opacity px-2 py-1 rounded-md ${isActive("/about") ? "opacity-100" : "opacity-70"
-              }`}>
-              About
+              Metaphysics
             </span>
           </Link>
           <span className="opacity-30">|</span>

@@ -21,13 +21,16 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={HomePage} />
-      <Route path="/writing" component={AllWriting} />
+      <Route path="/ethics">
+        <AllWriting category="Ethics" />
+      </Route>
+      <Route path="/aesthetics">
+        <AllWriting category="Aesthetics" />
+      </Route>
+      <Route path="/metaphysics">
+        <AllWriting category="Metaphysics" />
+      </Route>
       <Route path="/writing/:id" component={WritingPost} />
-      <Route path="/drawings" component={AllDrawings} />
-      <Route path="/drawings/:id" component={DrawingDetail} />
-      <Route path="/animations" component={AllAnimations} />
-      <Route path="/animations/:id" component={AnimationDetail} />
-      <Route path="/about" component={About} />
       <Route path="/community" component={Community} />
       <Route component={NotFound} />
     </Switch>

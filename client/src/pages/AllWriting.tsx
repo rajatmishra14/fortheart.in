@@ -5,16 +5,27 @@ import { type Post, uiCategories } from "@shared/schema";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-export default function AllWriting() {
+interface AllWritingProps {
+  category?: string;
+}
+
+export default function AllWriting({ category }: AllWritingProps) {
   const [location, setLocation] = useLocation();
   const params = new URLSearchParams(location.split('?')[1]);
-  
+
   const [sortBy, setSortBy] = useState<"time" | "popularity">(
     (params.get('sortBy') as "time" | "popularity") || "time"
   );
   const [selectedCategory, setSelectedCategory] = useState<string>(
-    params.get('category') || "All categories"
+    category || params.get('category') || "All categories"
   );
+
+  // Update selectedCategory if prop changes
+  useEffect(() => {
+    if (category) {
+      setSelectedCategory(category);
+    }
+  }, [category]);
 
   // Fetch posts with filters
   const { data: posts, isLoading, isError, error } = useQuery<Post[]>({
@@ -26,7 +37,7 @@ export default function AllWriting() {
         queryParams.set('category', selectedCategory);
       }
       queryParams.set('sortBy', sortBy);
-      
+
       const response = await fetch(`/api/posts?${queryParams.toString()}`);
       if (!response.ok) {
         const errorData = await response.json();
@@ -58,18 +69,16 @@ export default function AllWriting() {
           <div className="space-y-2">
             <button
               onClick={() => setSortBy("time")}
-              className={`block w-full text-left text-sm px-2 py-1.5 rounded-md hover-elevate ${
-                sortBy === "time" ? "font-medium" : "opacity-60"
-              }`}
+              className={`block w-full text-left text-sm px-2 py-1.5 rounded-md hover-elevate ${sortBy === "time" ? "font-medium" : "opacity-60"
+                }`}
               data-testid="button-sort-time"
             >
               Time
             </button>
             <button
               onClick={() => setSortBy("popularity")}
-              className={`block w-full text-left text-sm px-2 py-1.5 rounded-md hover-elevate ${
-                sortBy === "popularity" ? "font-medium" : "opacity-60"
-              }`}
+              className={`block w-full text-left text-sm px-2 py-1.5 rounded-md hover-elevate ${sortBy === "popularity" ? "font-medium" : "opacity-60"
+                }`}
               data-testid="button-sort-popularity"
             >
               Popularity
@@ -87,9 +96,8 @@ export default function AllWriting() {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`block w-full text-left text-sm px-2 py-1.5 rounded-md hover-elevate ${
-                  selectedCategory === category ? "font-medium" : "opacity-60"
-                }`}
+                className={`block w-full text-left text-sm px-2 py-1.5 rounded-md hover-elevate ${selectedCategory === category ? "font-medium" : "opacity-60"
+                  }`}
                 data-testid={`button-category-${category.toLowerCase().replace(/\s+/g, '-')}`}
               >
                 {category}
@@ -110,8 +118,8 @@ export default function AllWriting() {
         ) : isError ? (
           <div className="text-center py-12" data-testid="text-error">
             <p className="text-red-500 mb-4">Failed to load posts. {error?.message || 'Please try again.'}</p>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               onClick={() => {
                 setSelectedCategory("All categories");
                 setSortBy("time");
@@ -130,15 +138,15 @@ export default function AllWriting() {
                     {/* Thumbnail */}
                     {post.thumbnailUrl && (
                       <div className="w-32 h-32 flex-shrink-0 rounded-md overflow-hidden bg-muted">
-                        <img 
-                          src={post.thumbnailUrl} 
+                        <img
+                          src={post.thumbnailUrl}
                           alt={post.title}
                           className="w-full h-full object-cover"
                           data-testid={`img-post-thumbnail-${post.id}`}
                         />
                       </div>
                     )}
-                    
+
                     {/* Content */}
                     <div className="flex-1 flex flex-col">
                       <Link href={`/writing/${post.id}`} data-testid={`link-post-title-${post.id}`}>
@@ -146,17 +154,17 @@ export default function AllWriting() {
                           {post.title}
                         </h2>
                       </Link>
-                      
+
                       <div className="text-sm opacity-60 mb-3" data-testid={`metadata-post-${post.id}`}>
                         <span>{post.date}</span>
                         <span className="mx-2">·</span>
                         <span>{post.views} views</span>
                       </div>
-                      
+
                       <p className="text-sm opacity-70 mb-4 line-clamp-2" data-testid={`excerpt-post-${post.id}`}>
                         {post.content}
                       </p>
-                      
+
                       <div className="mt-auto">
                         <Link href={`/writing/${post.id}`} data-testid={`link-read-${post.id}`}>
                           <Button variant="outline" size="sm" data-testid={`button-read-${post.id}`}>
