@@ -1,5 +1,6 @@
 import { Link } from "wouter";
-import { SiInstagram, SiYoutube, SiReddit, SiDiscord } from "react-icons/si";
+import { Instagram, Youtube } from "lucide-react";
+import { SiReddit, SiDiscord } from "./social-icons";
 
 export default function Header() {
   return (
@@ -18,7 +19,7 @@ export default function Header() {
               data-testid="link-instagram"
               aria-label="Instagram"
             >
-              <SiInstagram className="w-5 h-5" />
+              <Instagram className="w-5 h-5" />
             </a>
             <a
               href="https://youtube.com/@letterstorajat"
@@ -28,7 +29,7 @@ export default function Header() {
               data-testid="link-youtube"
               aria-label="YouTube"
             >
-              <SiYoutube className="w-5 h-5" />
+              <Youtube className="w-5 h-5" />
             </a>
             <a
               href="https://reddit.com"

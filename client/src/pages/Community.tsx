@@ -1,6 +1,6 @@
 import { Link } from "wouter";
-import { ArrowLeft } from "lucide-react";
-import { SiDiscord, SiReddit, SiInstagram, SiYoutube } from "react-icons/si";
+import { ArrowLeft, Instagram, Youtube } from "lucide-react";
+import { SiDiscord, SiReddit } from "../components/social-icons";
 
 export default function Community() {
     return (
@@ -53,11 +53,11 @@ export default function Community() {
                     <h2 className="text-xl font-medium mb-6">Follow us</h2>
                     <div className="flex gap-6">
                         <a href="https://instagram.com/fortheart.in" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity">
-                            <SiInstagram className="w-5 h-5" />
+                            <Instagram className="w-5 h-5" />
                             <span>Instagram</span>
                         </a>
                         <a href="https://youtube.com/@letterstorajat" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity">
-                            <SiYoutube className="w-5 h-5" />
+                            <Youtube className="w-5 h-5" />
                             <span>YouTube</span>
                         </a>
                     </div>

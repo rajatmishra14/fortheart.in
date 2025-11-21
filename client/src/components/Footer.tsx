@@ -1,4 +1,5 @@
-import { SiInstagram, SiYoutube, SiReddit, SiDiscord } from "react-icons/si";
+import { Instagram, Youtube } from "lucide-react";
+import { SiReddit, SiDiscord } from "./social-icons";
 
 export default function Footer() {
   return (
@@ -9,10 +10,10 @@ export default function Footer() {
         </div>
         <div className="flex items-center gap-6">
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="opacity-60 hover:opacity-100 transition-opacity">
-            <SiInstagram className="w-5 h-5" />
+            <Instagram className="w-5 h-5" />
           </a>
           <a href="https://youtube.com/@letterstorajat" target="_blank" rel="noopener noreferrer" className="opacity-60 hover:opacity-100 transition-opacity">
-            <SiYoutube className="w-5 h-5" />
+            <Youtube className="w-5 h-5" />
           </a>
           <a href="https://reddit.com" target="_blank" rel="noopener noreferrer" className="opacity-60 hover:opacity-100 transition-opacity">
             <SiReddit className="w-5 h-5" />
