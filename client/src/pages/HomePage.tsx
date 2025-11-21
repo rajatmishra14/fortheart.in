@@ -30,9 +30,7 @@ export default function HomePage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
         {/* Writing Section */}
         <section>
-          <h2 className="text-xl font-semibold mb-6" data-testid="heading-writing">
-            # Writing
-          </h2>
+          <h2 className="text-xl font-semibold mb-6" data-testid="heading-writing">Ethics</h2>
           <div className="space-y-6">
             {recentPosts.map((post) => (
               <article key={post.id}>
