@@ -32,13 +32,7 @@ export default function Navigation() {
             <span className={`hover-elevate transition-opacity px-2 py-1 rounded-md ${isActive("/animations") ? "opacity-100" : "opacity-70"
               }`}>Metaphysics</span>
           </Link>
-          <span className="opacity-30">|</span>
-          <Link href="/about" data-testid="link-about">
-            <span className={`hover-elevate transition-opacity px-2 py-1 rounded-md ${isActive("/about") ? "opacity-100" : "opacity-70"
-              }`}>
-              About
-            </span>
-          </Link>
+          
           <span className="opacity-30">|</span>
           <Link href="/contact" data-testid="link-contact">
             <span className={`hover-elevate transition-opacity px-2 py-1 rounded-md ${isActive("/contact") ? "opacity-100" : "opacity-70"
