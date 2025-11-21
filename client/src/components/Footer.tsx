@@ -5,9 +5,6 @@ export default function Footer() {
         <p className="text-sm opacity-60" data-testid="text-copyright">
           &copy; {new Date().getFullYear()} letterstorajat
         </p>
-        <div className="flex gap-6 text-sm opacity-60">
-          <a href="/about" className="hover:opacity-100 transition-opacity">About</a>
-        </div>
       </div>
     </footer>
   );
