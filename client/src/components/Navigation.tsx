@@ -30,9 +30,7 @@ export default function Navigation() {
           <span className="opacity-30">|</span>
           <Link href="/animations" data-testid="link-animations">
             <span className={`hover-elevate transition-opacity px-2 py-1 rounded-md ${isActive("/animations") ? "opacity-100" : "opacity-70"
-              }`}>
-              Animations
-            </span>
+              }`}>Metaphysics</span>
           </Link>
           <span className="opacity-30">|</span>
           <Link href="/about" data-testid="link-about">
