@@ -15,17 +15,17 @@ import _01_ThomasAquinas from "@assets/01_ThomasAquinas.gif";
 import island_1 from "@assets/island-1.gif";
 
 // Content block types for rich blog posts
-type ContentBlock = 
+type ContentBlock =
   | { type: 'text'; content: string }
   | { type: 'image'; src: string; alt: string; caption?: string }
   | { type: 'animation'; src: string; alt: string; caption?: string };
 
 // TODO: remove mock data
-const posts: Record<string, { 
-  title: string; 
-  date: string; 
-  views: number; 
-  content: ContentBlock[] 
+const posts: Record<string, {
+  title: string;
+  date: string;
+  views: number;
+  content: ContentBlock[]
 }> = {
   "1": {
     title: "On Visual Thinking and Clarity",
@@ -151,17 +151,17 @@ export default function WritingPost() {
 
   return (
     <div className="max-w-prose mx-auto px-6 py-12">
-      <Link href="/writing" data-testid="link-back">
+      <Link href="/" data-testid="link-back">
         <div className="flex items-center gap-2 text-sm opacity-70 hover-elevate inline-flex px-2 py-1 rounded-md transition-opacity mb-8">
           <ArrowLeft className="w-4 h-4" />
-          <span>Back to writing</span>
+          <span>Back to home</span>
         </div>
       </Link>
       <article>
         <h1 className="text-3xl font-semibold mb-4" data-testid="heading-post-title">
           {post.title}
         </h1>
-        
+
         <div className="text-sm opacity-60 space-x-2 mb-8" data-testid="metadata-post">
           <span>{post.date}</span>
           <span>·</span>
@@ -177,13 +177,13 @@ export default function WritingPost() {
                 </p>
               );
             }
-            
+
             if (block.type === 'image') {
               return (
                 <figure key={index} className="my-8" data-testid={`figure-image-${index}`}>
                   <div className="rounded-md overflow-hidden">
-                    <img 
-                      src={_01_ThomasAquinas} 
+                    <img
+                      src={_01_ThomasAquinas}
                       alt={block.alt}
                       className="w-full"
                       data-testid={`img-inline-${index}`}
@@ -197,13 +197,13 @@ export default function WritingPost() {
                 </figure>
               );
             }
-            
+
             if (block.type === 'animation') {
               return (
                 <figure key={index} className="my-8" data-testid={`figure-animation-${index}`}>
                   <div className="rounded-md overflow-hidden bg-muted">
-                    <img 
-                      src={island_1} 
+                    <img
+                      src={island_1}
                       alt={block.alt}
                       className="w-full"
                       data-testid={`animation-inline-${index}`}
@@ -217,7 +217,7 @@ export default function WritingPost() {
                 </figure>
               );
             }
-            
+
             return null;
           })}
         </div>
@@ -231,7 +231,7 @@ export default function WritingPost() {
           <CommentsDisplay comments={comments} />
         )}
 
-        <CommentForm 
+        <CommentForm
           postId={postId}
           onSubmit={handleCommentSubmit}
           isSubmitting={createCommentMutation.isPending}

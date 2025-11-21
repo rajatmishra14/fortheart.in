@@ -28,10 +28,10 @@ export default function HomePage() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-12">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
-        {/* Writing Section */}
+        {/* Ethics Section */}
         <section>
-          <h2 className="text-xl font-semibold mb-6" data-testid="heading-writing">
-            # Writing
+          <h2 className="text-xl font-semibold mb-6" data-testid="heading-ethics">
+            # Ethics
           </h2>
           <div className="space-y-6">
             {recentPosts.map((post) => (
@@ -49,26 +49,26 @@ export default function HomePage() {
               </article>
             ))}
           </div>
-          <Link href="/writing" data-testid="link-all-articles">
+          <Link href="/ethics" data-testid="link-all-ethics">
             <div className="mt-8 flex items-center gap-1 text-sm opacity-70 hover-elevate inline-flex px-2 py-1 rounded-md transition-opacity">
-              <span>See all articles</span>
+              <span>See all ethics</span>
               <ArrowRight className="w-4 h-4" />
             </div>
           </Link>
         </section>
 
-        {/* Drawings Section */}
+        {/* Aesthetics Section */}
         <section>
-          <h2 className="text-xl font-semibold mb-6" data-testid="heading-drawings">
-            # Drawings
+          <h2 className="text-xl font-semibold mb-6" data-testid="heading-aesthetics">
+            # Aesthetics
           </h2>
           <div className="space-y-6">
             {recentDrawings.map((drawing) => (
               <article key={drawing.id}>
-                <Link href={`/drawings/${drawing.id}`} data-testid={`link-drawing-${drawing.id}`}>
+                <Link href={`/writing/${drawing.id}`} data-testid={`link-drawing-${drawing.id}`}>
                   <div className="hover-elevate rounded-md overflow-hidden mb-2">
-                    <img 
-                      src={drawing.imageUrl} 
+                    <img
+                      src={drawing.imageUrl}
                       alt={drawing.title}
                       className="w-full aspect-square object-cover"
                       data-testid={`img-drawing-${drawing.id}`}
@@ -82,26 +82,26 @@ export default function HomePage() {
               </article>
             ))}
           </div>
-          <Link href="/drawings" data-testid="link-all-drawings">
+          <Link href="/aesthetics" data-testid="link-all-aesthetics">
             <div className="mt-8 flex items-center gap-1 text-sm opacity-70 hover-elevate inline-flex px-2 py-1 rounded-md transition-opacity">
-              <span>See all drawings</span>
+              <span>See all aesthetics</span>
               <ArrowRight className="w-4 h-4" />
             </div>
           </Link>
         </section>
 
-        {/* Animations Section */}
+        {/* Metaphysics Section */}
         <section>
-          <h2 className="text-xl font-semibold mb-6" data-testid="heading-animations">
-            # Animations
+          <h2 className="text-xl font-semibold mb-6" data-testid="heading-metaphysics">
+            # Metaphysics
           </h2>
           <div className="space-y-6">
             {recentAnimations.map((animation) => (
               <article key={animation.id}>
-                <Link href={`/animations/${animation.id}`} data-testid={`link-animation-${animation.id}`}>
+                <Link href={`/writing/${animation.id}`} data-testid={`link-animation-${animation.id}`}>
                   <div className="hover-elevate rounded-md overflow-hidden mb-2">
-                    <img 
-                      src={animation.thumbnailUrl} 
+                    <img
+                      src={animation.thumbnailUrl}
                       alt={animation.title}
                       className="w-full aspect-video object-cover"
                       data-testid={`img-animation-${animation.id}`}
@@ -115,9 +115,9 @@ export default function HomePage() {
               </article>
             ))}
           </div>
-          <Link href="/animations" data-testid="link-all-animations">
+          <Link href="/metaphysics" data-testid="link-all-metaphysics">
             <div className="mt-8 flex items-center gap-1 text-sm opacity-70 hover-elevate inline-flex px-2 py-1 rounded-md transition-opacity">
-              <span>See all animations</span>
+              <span>See all metaphysics</span>
               <ArrowRight className="w-4 h-4" />
             </div>
           </Link>
