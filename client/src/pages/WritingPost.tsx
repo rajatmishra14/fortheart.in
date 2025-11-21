@@ -1,4 +1,5 @@
 import { useRoute, Link } from "wouter";
+// Fixed syntax error
 import { ArrowLeft } from "lucide-react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { queryClient, apiRequest } from "@/lib/queryClient";
