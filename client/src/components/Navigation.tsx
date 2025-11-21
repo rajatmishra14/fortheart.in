@@ -18,9 +18,7 @@ export default function Navigation() {
           <span className="opacity-30">|</span>
           <Link href="/writing" data-testid="link-writing">
             <span className={`hover-elevate transition-opacity px-2 py-1 rounded-md ${isActive("/writing") ? "opacity-100" : "opacity-70"
-              }`}>
-              Writing
-            </span>
+              }`}>Ethics</span>
           </Link>
           <span className="opacity-30">|</span>
           <Link href="/drawings" data-testid="link-drawings">
