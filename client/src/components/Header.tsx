@@ -33,8 +33,7 @@ export default function Header() {
           </div>
         </div>
         <p className="text-base opacity-70 italic leading-relaxed" data-testid="text-tagline">
-          Clarity & Beauty – Join the conversation on drawing, creativity and visual understanding,
-          and have a look at my pictures of this great spectacle called life!
+          There is too much world, so it's better to concentrate on particulars, rather than the whole. 
         </p>
       </div>
     </header>
