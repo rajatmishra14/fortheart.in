@@ -78,6 +78,12 @@ export default function HomePage() {
               </article>
             ))}
           </div>
+          <Link href="/drawings" data-testid="link-all-drawings">
+            <div className="mt-8 flex items-center gap-1 text-sm opacity-70 hover-elevate inline-flex px-2 py-1 rounded-md transition-opacity">
+              <span>See all drawings</span>
+              <ArrowRight className="w-4 h-4" />
+            </div>
+          </Link>
         </section>
 
         {/* Animations Section */}
